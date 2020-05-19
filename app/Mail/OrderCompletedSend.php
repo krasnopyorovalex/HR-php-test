@@ -33,6 +33,7 @@ class OrderCompletedSend extends Mailable
      */
     public function build(): self
     {
-        return $this->view('emails.order-send', ['order' => $this->order]);
+        return $this->subject('Завершенный заказ')
+            ->view('emails.order-send', ['order' => $this->order]);
     }
 }
