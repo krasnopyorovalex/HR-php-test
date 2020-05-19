@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    protected $guarded;
+    protected $guarded = [];
+
+    protected $perPage = 25;
 
     /**
      * @return BelongsTo

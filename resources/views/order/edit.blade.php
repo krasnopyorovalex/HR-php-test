@@ -5,6 +5,7 @@
 @section('content')
     <h3>Форма редактирования заказа</h3>
     <hr>
+    @include('layouts.partials.errors')
     <form action="{{ route('orders.update', $order) }}" method="post">
         {{ csrf_field() }}
         {{ method_field('put') }}
@@ -18,7 +19,11 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label for="field-partner">Партнер</label>
-                    <input type="text" class="form-control" id="field-partner" name="partner" value="{{ old('partner', $order->partner->name) }}" autocomplete="off">
+                    <select name="partner_id" id="field-partner" class="form-control">
+                        @foreach($partners as $partner)
+                            <option value="{{ $partner->id }}" {{ $partner->id === $order->partner->id ? 'selected' : '' }}>{{ $partner->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -46,7 +51,7 @@
             </div>
             <div class="col-md-6"></div>
         </div>
-        <h4>Стоимость заказа: <span class="label label-primary">{{ $order->orderProducts->sum('total') }}</span></h4>
+        <h4>Стоимость заказа: <span class="label label-primary">{{ format_as_price($order->orderProducts->sum('total')) }}</span></h4>
         <button type="submit" class="btn btn-default">Сохранить</button>
     </form>
 @endsection

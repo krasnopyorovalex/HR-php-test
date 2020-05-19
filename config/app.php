@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\WeatherProvider;
+
 return [
 
     /*
@@ -65,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Moscow',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +169,7 @@ return [
         /*
          * Package Service Providers...
          */
+        WeatherProvider::class,
 
         /*
          * Application Service Providers...

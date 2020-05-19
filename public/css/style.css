@@ -1,0 +1,20 @@
+.price {
+    text-decoration: underline;
+    position: relative;
+}
+
+.price:hover {
+    cursor: pointer;
+}
+.form-update-price {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.form-update-price input {
+    width: 70px;
+    text-align: center;
+}
+.form-update-price button {
+    margin: 0 0 0 .5rem;
+}

@@ -8,17 +8,15 @@ use App\Order;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-class GetOrdersQuery
+class GetActualOrdersQuery
 {
     /**
      * @return Order[]|Builder[]|Collection
      */
     public function handle()
     {
-        return Order::with(['partner', 'orderProducts' => static function($query) {
-                return $query->selectRaw('*, price*quantity as total');
-            }])
-            ->limit(20)
+        return Order::whereDate('delivery_dt', '>=', today())
+            ->oldest('delivery_dt')
             ->get();
     }
 }

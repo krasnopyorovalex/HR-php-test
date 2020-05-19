@@ -19,6 +19,30 @@ class OrderStatus
     ];
 
     /**
+     * @return int
+     */
+    public function new(): int
+    {
+        return self::NEW;
+    }
+
+    /**
+     * @return int
+     */
+    public function confirmed(): int
+    {
+        return self::CONFIRMED;
+    }
+
+    /**
+     * @return int
+     */
+    public function completed(): int
+    {
+        return self::COMPLETED;
+    }
+
+    /**
      * @param Order $order
      * @return string
      */
@@ -33,5 +57,14 @@ class OrderStatus
     public function getLabels(): array
     {
         return self::LABELS;
+    }
+
+    /**
+     * @param Order $order
+     * @return bool
+     */
+    public function isCompleted(Order $order): bool
+    {
+        return $order->status === $this->completed();
     }
 }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Order\Queries;
+namespace Domain\Product\Queries;
 
-use App\Order;
+use App\Product;
 
-class GetOrderByIdQuery
+class GetProductByIdQuery
 {
     /**
      * @var int
@@ -14,7 +14,7 @@ class GetOrderByIdQuery
     private $id;
 
     /**
-     * GetOrderByIdQuery constructor.
+     * GetProductByIdQuery constructor.
      * @param int $id
      */
     public function __construct(int $id)
@@ -27,6 +27,6 @@ class GetOrderByIdQuery
      */
     public function handle()
     {
-        return Order::where('id', $this->id)->with(['orderProducts'])->firstOrFail();
+        return Product::where('id', $this->id)->firstOrFail();
     }
 }

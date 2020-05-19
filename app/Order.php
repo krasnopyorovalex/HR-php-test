@@ -12,6 +12,8 @@ class Order extends Model
 {
     protected $guarded = [];
 
+    protected $with = ['partner', 'orderProducts'];
+
     /**
      * @return BelongsTo
      */
@@ -25,7 +27,8 @@ class Order extends Model
      */
     public function orderProducts(): HasMany
     {
-        return $this->hasMany(OrderProduct::class);
+        return $this->hasMany(OrderProduct::class)
+            ->selectRaw('*, price*quantity as total');
     }
 
     /**

@@ -12,6 +12,21 @@
     <link href="{{ asset('favicon.ico') }}" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ route('orders.all') }}">HR-php-test</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ route('orders.all') }}">Заказы</a></li>
+                    <li><a href="{{ route('weather') }}">Температура в Брянске</a></li>
+                    <li><a href="{{ route('products') }}">Продукты</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row">
             @yield('content')
